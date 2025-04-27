@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>El meu projecte Snap!</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="snapFrame"
+    src="https://snap.berkeley.edu/snap/snap.html#present:Username=ELTEUUSUARI&ProjectName=ELTEUPROJECTE&editMode=false&noRun">
+  </iframe>
+
+  <script>
+    // Quan l'iframe carregui, intenta amagar la barra de control
+    document.getElementById('snapFrame').addEventListener('load', function() {
+      const iframe = document.getElementById('snapFrame').contentWindow;
+      try {
+        // INTENTAR amagar barra (NO funcionarà local per restriccions de navegador!)
+        iframe.document.querySelector('.controlBar').style.display = 'none';
+      } catch (e) {
+        console.warn("No es pot accedir a l'iframe per restriccions de seguretat (CORS).");
+      }
+    });
+  </script>
+</body>
+</html>
